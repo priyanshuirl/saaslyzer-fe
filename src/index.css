@@ -1,0 +1,149 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;                /* Surface 0: Main bg */
+    --foreground: 222 47% 11%;              /* Ink 900 (near-black for text) */
+
+    --primary: 221 83% 56%;                 /* #2563EB Primary 500 Brand Blue */
+    --primary-foreground: 0 0% 100%;        /* White for contrast */
+
+    --secondary: 173 76% 39%;               /* Teal (Accent) */
+    --secondary-foreground: 0 0% 100%;      /* White text on teal */
+
+    --accent: 173 76% 39%;                  /* Teal (also used for success) */
+    --accent-foreground: 0 0% 100%;         /* White on accent */
+
+    --warning: 47 98% 53%;                  /* #EAB308 Gold for warning */
+    --warning-foreground: 0 0% 15%;         /* Nearly black for contrast */
+
+    --destructive: 0 84% 63%;               /* #EF4444 Red */
+    --destructive-foreground: 0 0% 100%;
+
+    --muted: 222 39% 96%;                   /* Light off-blue for subtle bg */
+    --muted-foreground: 222 19% 28%;        /* Muted blue text */
+
+    --border: 222 39% 89%;                  /* Soft blue for borders */
+    --input: 222 39% 89%;                   /* Slightly off-white for inputs */
+    --ring: 221 83% 56%;                    /* Primary blue ring */
+    --radius: 0.5rem;
+
+    --card: 210 20% 98%;                    /* Surface 100 card bg (#F8FAFC) */
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;              /* Ink 900 for bg */
+    --foreground: 210 20% 98%;              /* Card/Suface white for text */
+
+    --primary: 221 83% 56%;                 /* Primary brand blue */
+    --primary-foreground: 0 0% 100%;        /* White */
+
+    --secondary: 173 76% 39%;               /* Teal accent */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 173 76% 39%;                  /* Teal for accent/success */
+    --accent-foreground: 0 0% 100%;
+
+    --warning: 47 98% 53%;                  /* Gold */
+    --warning-foreground: 221 83% 56%;      /* Brand blue text */
+
+    --destructive: 0 84% 63%;               /* Red */
+    --destructive-foreground: 210 20% 98%;  /* Near white */
+
+    --muted: 222 24% 17%;                   /* Deep muted blue for bg */
+    --muted-foreground: 210 16% 70%;
+
+    --border: 222 34% 30%;                  /* Muted blue border */
+    --input: 222 34% 22%;                   /* Input bg (darker) */
+    --ring: 221 83% 56%;                    /* Brand blue focus */
+    --card: 222 40% 14%;                    /* Slightly lighter than bg */
+    --card-foreground: 210 20% 98%;
+    --popover: 222 40% 14%;
+    --popover-foreground: 210 20% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer components {
+  .metric-card {
+    @apply p-2 sm:p-4 bg-card rounded-lg border border-border shadow-sm transition-all hover:shadow-md;
+  }
+
+  .metric-title {
+    @apply text-sm font-medium text-primary mb-1;
+  }
+
+  .metric-value {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground;
+  }
+
+  .metric-trend {
+    @apply flex items-center text-xs mt-2;
+  }
+
+  .metric-trend-up {
+    @apply text-accent;
+  }
+
+  .metric-trend-down {
+    @apply text-destructive;
+  }
+
+  /* Feature Card Styling */
+  .feature-panel {
+    @apply rounded-2xl bg-white/80 backdrop-blur-lg border border-purple-100 shadow-lg px-7 pt-8 pb-7 flex flex-col items-start hover:shadow-xl hover:-translate-y-1 transition;
+    min-height: 270px;
+  }
+  .icon-glass {
+    @apply rounded-lg p-3 mb-5 shadow-lg flex items-center justify-center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 28px 0 rgba(145,119,255,0.12);
+  }
+  .feature-title {
+    @apply text-[1.25rem] font-bold text-indigo-900 mb-2;
+    /* Removed drop-shadow for cleaner titles */
+  }
+  .feature-desc {
+    @apply text-[1rem] text-gray-700 font-medium tracking-tight leading-relaxed;
+  }
+
+  /* Pricing Panel Styling */
+  .pricing-panel {
+    @apply rounded-2xl bg-white/80 backdrop-blur-md border border-purple-100 shadow-xl py-10 px-8 flex flex-col items-center hover:shadow-2xl hover:-translate-y-1 transition;
+    min-height: 470px;
+    position:relative;
+  }
+  .pricing-title {
+    @apply text-xl font-bold text-purple-900 mb-1 tracking-tight;
+  }
+  .pricing-features {
+    @apply space-y-3 mb-8 mt-4 text-gray-700 text-base;
+  }
+  .pricing-features li {
+    @apply flex items-center before:content-['✓'] before:text-pink-500 before:mr-2 before:font-bold transition;
+  }
+  .popular-banner {
+    @apply absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-fuchsia-500 via-pink-400 to-purple-500 text-white px-4 py-1 rounded-full text-md font-semibold shadow-md z-20;
+    letter-spacing: .03em;
+  }
+
+  /* Glassy Badge */
+  .glassy-badge {
+    @apply bg-gradient-to-r from-pink-100/70 via-indigo-100/60 to-purple-100/70 border border-pink-200/90 backdrop-blur-md;
+  }
+}
